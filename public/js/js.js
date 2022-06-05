@@ -78,7 +78,7 @@ async function getIcon(id) {
 
 		const res = await bare.fetch(urlIco.href);
 		const obj = URL.createObjectURL([await res.blob()], {
-			type: res.headers.get('content-type'),
+			type: res.headers.get('content-type') || 'image/x-icon',
 		});
 
 		setTimeout(() => URL.revokeObjectURL(obj), 1e3);
@@ -89,7 +89,7 @@ async function getIcon(id) {
 			new URL('/favicon.ico', CONTENT_WINDOW(id).location)
 		);
 		const obj = URL.createObjectURL([await res.blob()], {
-			type: res.headers.get('content-type'),
+			type: res.headers.get('content-type') || 'image/x-icon',
 		});
 
 		setTimeout(() => URL.revokeObjectURL(obj), 1e3);
