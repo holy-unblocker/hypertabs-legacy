@@ -15,15 +15,15 @@
   <link href='css/chrome-tabs.css' rel='stylesheet'>
   <link href='css/chrome-tabs-dark-theme.css' rel='stylesheet'>
   <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'>
-  <link rel="manifest" href="manifest.json" />
-  <script src="uv.bundle.js"></script>
-  <script src="uv.config.js"></script>
+  <script src="/uv/uv.bundle.js"></script>
+  <script src="/uv/uv.config.js"></script>
+  <script src="/bare-client.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js');
-      navigator.serviceWorker.register('/uv.sw.js', {
-          scope: '/sw/',
-      });
+		navigator.serviceWorker.register('/uv/sw.js', {
+			scope: __uv$config.prefix,
+			updateViaCache: 'none',
+		});
     };
 
     // check custom functions
@@ -48,7 +48,6 @@
 
   </script>
   <meta name="theme-color" content="#252729" />
-  <script async src="https://arc.io/widget.min.js#ET2cdZ3E"></script>
 </head>
 
 <body id="alpha">
